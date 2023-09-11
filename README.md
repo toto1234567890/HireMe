@@ -15,8 +15,6 @@ The common part is mostly finished, the others have been started...
 The project rely on asyncio, flask, fastAPI, multiprocess, threads, sockets, socket-io, jupyter-lab, TA-lib, websocket, django... 
 (I have added the requirements.txt of the python virtual environment)
 
-
-<br>
 <br>
 
 <h4>This repo contains only (and almost) all the files of the "common" part </h4>
