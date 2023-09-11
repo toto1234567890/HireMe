@@ -34,7 +34,7 @@ A "kind of remote control" from smart phone :
 <br>
 Data analysis example from "Jupyter labs" : 
 
-![montecarlo1](https://github.com/toto1234567890/HireMe/edit/main/montecarlo1.html)
+![montecarlo1](https://github.com/toto1234567890/HireMe/edit/main/montecarlo.ipynb)
 
 
 <br>
