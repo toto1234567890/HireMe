@@ -18,7 +18,7 @@ The project rely on asyncio, flask, fastAPI, multiprocess, threads, sockets, soc
 
 Real time Crypto Currency price :
 
-![Real Time Crypto](https://github.com/toto1234567890/HireMe/edit/main/crypto.png?raw=true)
+![Real Time Crypto](https://github.com/toto1234567890/HireMe/edit/main/crypto.png)
 
 
  
