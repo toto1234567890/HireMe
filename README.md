@@ -5,7 +5,7 @@ This an exibition of some parts of my work done on spare time...
 this is a "starting" point of a personal project, which should ended (maybe) as a trading "plateform".
 
 <br>
-# This project is/will be split in 5 main parts : 
+This project is/will be split in 5 main parts : 
   - a "common" part which contains the "core part" for every other parts
   - a "trading" part which make trades (operational part)
   - an "analyst" part which will make different kind of analysis (technical, statistical, fundamental analysis...)
