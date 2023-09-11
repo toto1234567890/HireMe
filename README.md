@@ -1,8 +1,8 @@
 # HireMe
 
 <br>
-This an exibition of some parts of my work done on spare time...<br>
-this is a "starting" point of a personal project, which should ended (maybe) as a trading "plateform".
+This an exibition of some parts of my work done on my spare time...<br>
+This is the "starting" point of a personal project, which should ended (maybe) as a trading "plateform".
 <br><br>
 This project is/will be split in 5 main parts :<br>
   - a "common" part which contains the "core part" for every other parts <br>
