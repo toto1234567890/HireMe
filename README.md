@@ -5,12 +5,12 @@ This an exibition of some parts of my work done on spare time...
 this is a "starting" point of a personal project, which should ended (maybe) as a trading "plateform".
 
 <br>
-This project is/will be split in 5 main parts : 
-  - a "common" part which contains the "core part" for every other parts
-  - a "trading" part which make trades (operational part)
-  - an "analyst" part which will make different kind of analysis (technical, statistical, fundamental analysis...)
-  - a "scrapy" part which will scrap different kind of data around the web
-  - a "backtesting" part which should be able to make tests with "portfolio rebalancing"
+This project is/will be split in 5 main parts : <br>
+  - a "common" part which contains the "core part" for every other parts <br>
+  - a "trading" part which make trades (operational part) <br>
+  - an "analyst" part which will make different kind of analysis (technical, statistical, fundamental analysis...) <br>
+  - a "scrapy" part which will scrap different kind of data around the web <br>
+  - a "backtesting" part which should be able to make tests with "portfolio rebalancing" <br>
 
 <br>
 The common part is mostly finished, the others have been started...                                                                              
