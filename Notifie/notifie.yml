@@ -5,7 +5,7 @@ version: 1
 # URLs should start with - (remove the comment symbol #)
 # Replace the values with your tokens/ids
 # For example a telegram URL would look like:
-# - tgram://123456789:AABx8iXjE5C-vG4SDhf6ARgdFgxYxhuHb4A/-606743502
+# - tgram://
 urls:
   # - tgram://TOKEN/CHAT_ID
   # - discord://WebhookID/WebhookToken/
@@ -15,25 +15,25 @@ urls:
   - macosx://_/?sound=default:
     - tag:
       - desktop
-  - tgram://5069381625:AAHCJzzk6o4PX0aPEcbky1NPxFR0PWKHo-A/1995178465:
+  - tgram://
     - tag:
       - telebot
 
   # remaining : 1.87 € on my vonage account
-  # - nexmo://35005abf:HSKhT8MXszIIlwQL@+33658892412/+33658892412:
+  # - nexmo://
   #   - tag:
   #     - sms 
       
-  # - mailtos://TradeNotifs:totwyk-0cirne-Vywjym@protonmail.com:
+  # - mailtos://TradeNotif
   #   - tag:
   #     - email
 
 # Telebot
-# Telebot_Token=5069381625=AAHCJzzk6o4PX0aPEcbky1NPxFR0PWKHo-A
-# Telebot_ChatId=1995178465
+# Telebot_Token=
+# Telebot_ChatId=
 #
 # Telegram
-# Telegram_Api=10037566
-# Telegram_Hash=ce435c2033146088eef68dabb1ffb1df
+# Telegram_Api=
+# Telegram_Hash=
 # Telegram_Session=MyTelegram.session
 
