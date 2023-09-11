@@ -40,8 +40,8 @@ Data analysis example from "Jupyter labs" :
 <br>
 A FastAPI server to load datas, test and calculate realtime TA indicators (based on https://ta-lib.github.io/ta-lib-python/ also based on original TA-LIB c/c++) :
 
-![FastAPI1](https://github.com/toto1234567890/HireMe/edit/main/remoteAppTelegram.png)
-![FastAPI1](https://github.com/toto1234567890/HireMe/edit/main/remoteAppTelegram.png)
+![FastAPI1](https://github.com/toto1234567890/HireMe/edit/main/fastAPI1.png)
+![FastAPI1](https://github.com/toto1234567890/HireMe/edit/main/fastAPI2.png)
 
 
 
