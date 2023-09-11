@@ -19,7 +19,7 @@ The project rely on asyncio, flask, fastAPI, multiprocess, threads, sockets, soc
 <br>
 <br>
 
-<h3>This repo contains only and almost all files of the "common" part </h3>
+<h4>This repo contains only (and almost) all the files of the "common" part </h4>
 
 
 
