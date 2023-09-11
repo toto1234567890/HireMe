@@ -1,15 +1,15 @@
 # HireMe
 
 <br>
-This an exibition of some parts of my work done on my spare time...<br>
+This an exibition of some parts of my work done on my spare time... (with chatGPT as assistant recently !) <br>
 This is the "starting" point of a personal project, which should ended (maybe) as a trading "plateform".
 <br><br>
 This project is/will be split in 5 main parts :<br>
-#### - a "common" part which contains the "core part" for every other parts 
-#### - a "trading" part which make trades (operational part) 
-#### - an "analyst" part which will make different kind of analysis (technical, statistical, fundamental analysis...) 
-#### - a "scrapy" part which will scrap different kind of data around the web 
-####  a "backtesting" part which should be able to make tests with "portfolio rebalancing" 
+       - a "common" part which contains the "core part" for every other parts <br>
+       - a "trading" part which make trades (operational part) <br>
+       - an "analyst" part which will make different kind of analysis (technical, statistical, fundamental analysis...) <br>
+       - a "scrapy" part which will scrap different kind of data around the web <br>
+       - a "backtesting" part which should be able to make tests with "portfolio rebalancing" <br>
 
 <br>
 The common part is mostly finished, the others have been started... <br>                                                                             
@@ -29,19 +29,19 @@ Real time Crypto Currency price :
 <br> 
 A "kind of remote control" from smart phone :
 
-![remoteAppTelegram](https://github.com/toto1234567890/HireMe/edit/main/remoteAppTelegram.png)
+![Alt Text](https://github.com/toto1234567890/HireMe/edit/main/remoteAppTelegram.png)
 
 <br>
 Data analysis example from "Jupyter labs" : 
 
-![montecarlo1](https://github.com/toto1234567890/HireMe/edit/main/montecarlo.ipynb)
+![Alt Text](https://github.com/toto1234567890/HireMe/edit/main/montecarlo.ipynb)
 
 
 <br>
 A FastAPI server to load datas, test and calculate realtime TA indicators (based on https://ta-lib.github.io/ta-lib-python/ also based on original TA-LIB c/c++) :
 
-![FastAPI1](https://github.com/toto1234567890/HireMe/edit/main/fastAPI1.png)
-![FastAPI1](https://github.com/toto1234567890/HireMe/edit/main/fastAPI2.png)
+![Alt Text](https://github.com/toto1234567890/HireMe/edit/main/fastAPI1.png)
+![Alt Text](https://github.com/toto1234567890/HireMe/edit/main/fastAPI2.png)
 
 
 
