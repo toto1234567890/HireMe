@@ -76,8 +76,8 @@ def jupyterAutoLogin():
             global _xsrf 
             login_url = "{0}/api/login".format(JP_BASEURL)
             JP_session = requestsSession() 
-            response = JP_session.post(url=login_url, data={'username': 'webdev', 
-                                                            'password': '@Toto.con123@Jup'})        
+            response = JP_session.post(url=login_url, data={'username': :), 
+                                                            'password': :) })        
         def wrappedJupyterAutoLogin(*args, **kwargs):
             return f(*args, **kwargs)
         return wrappedJupyterAutoLogin
