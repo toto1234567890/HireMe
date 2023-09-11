@@ -24,7 +24,7 @@ Real time Crypto Currency price :
  
 A "kind of remote control" from smart phone :
 
-![remote app telegram](https://github.com/toto1234567890/HireMe/edit/main/remote app telegram.png)
+![remoteAppTelegram](https://github.com/toto1234567890/HireMe/edit/main/remoteAppTelegram.png)
 
 
 Data analysis example from "Jupyter labs" : 
