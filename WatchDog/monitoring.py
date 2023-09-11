@@ -131,7 +131,7 @@ def djangoAutoLogin(DJ_url):
         global DJ_session 
         if DJ_session == None: 
             global csrf_token 
-            login_url="{0}/accounts/login/?next='{1}'".format(DJ_BASEURL, DJ_url) ; userName="webdev" ; passWord="@Toto.con123@Ovh"
+            login_url="{0}/accounts/login/?next='{1}'".format(DJ_BASEURL, DJ_url) ; userName= :)  ; passWord=  :)
             DJ_session = requestsSession()
             try:      
                 response = DJ_session.get(url=login_url)
