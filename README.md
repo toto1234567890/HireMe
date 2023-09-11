@@ -1,10 +1,10 @@
 # HireMe
 
 <br>
-This an exibition of some parts of my work done on spare time...
+This an exibition of some parts of my work done on spare time...<br>
 this is a "starting" point of a personal project, which should ended (maybe) as a trading "plateform".
- <br>
-This project is/will be split in 5 main parts :
+<br><br>
+This project is/will be split in 5 main parts :<br>
   - a "common" part which contains the "core part" for every other parts <br>
   - a "trading" part which make trades (operational part) <br>
   - an "analyst" part which will make different kind of analysis (technical, statistical, fundamental analysis...) <br>
@@ -12,14 +12,13 @@ This project is/will be split in 5 main parts :
   - a "backtesting" part which should be able to make tests with "portfolio rebalancing" <br>
 
 <br>
-The common part is mostly finished, the others have been started...                                                                              
-The project rely on asyncio, flask, fastAPI, multiprocess, threads, sockets, socket-io, jupyter-lab, TA-lib, websocket, django... 
+The common part is mostly finished, the others have been started... <br>                                                                             
+The project rely on asyncio, flask, fastAPI, multiprocess, threads, sockets, socket-io, jupyter-lab, TA-lib, websocket, django... <br>
 (I have added the requirements.txt of the python virtual environment)
 
 <br>
 
 <h4>This repo contains only (and almost) all the files of the "common" part </h4>
-
 
 <br>
 Real time Crypto Currency price :
@@ -35,6 +34,8 @@ A "kind of remote control" from smart phone :
 <br>
 Data analysis example from "Jupyter labs" : 
 
+![montecarlo1](https://github.com/toto1234567890/HireMe/edit/main/montecarlo1.html)
+
 
 <br>
 A FastAPI server to load datas, test and calculate realtime TA indicators (based on https://ta-lib.github.io/ta-lib-python/ also based on original TA-LIB c/c++) :
@@ -45,9 +46,9 @@ A FastAPI server to load datas, test and calculate realtime TA indicators (based
 
 
 <br>
-And many others things... (fundamental analysis on stocks, websockets..., sometime integrated, sometimes only snippets or not linked scripts)
+And many others things... (fundamental analysis on stocks, websockets, pseudo-arbitrage..., sometime integrated, sometimes only snippets or not linked scripts)
 
-to be continued...
+will be continued...
 
 
 
