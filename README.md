@@ -11,10 +11,13 @@ this is a "starting" point of a personal project, which should ended (maybe) as 
   - a "scrapy" part which will scrap different kind of data around the web
   - a "backtesting" part which should be able to make tests with "portfolio rebalancing"
     
-The common parts are mostly finished, the others have been started...                                                                              
+The common part is mostly finished, the others have been started...                                                                              
 The project rely on asyncio, flask, fastAPI, multiprocess, threads, sockets, socket-io, jupyter-lab, TA-lib, websocket, django... 
 (I have added the requirements.txt of the python virtual environment)
 
+
+
+<h2>This repo contain only and almost all files of the "common" part </h2>h2>
 
 Real time Crypto Currency price :
 
