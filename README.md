@@ -48,8 +48,8 @@ A FastAPI server to load datas, test and calculate realtime TA indicators (based
 <br>
 And many others things... (fundamental analysis on stocks, websockets, pseudo-arbitrage..., sometime integrated, sometimes only snippets or not linked scripts)
 
-<br>
-Will be continued...
+<br><br>
+Will be continued...<br>
 Thank you for having taking times to check my "draft" coding...
 
 
