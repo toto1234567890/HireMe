@@ -37,8 +37,7 @@ A "kind of remote control" from smart phone :
 Data analysis example from "Jupyter labs" : 
 
 
-
-
+<br>
 A FastAPI server to load datas, test and calculate realtime TA indicators (based on https://ta-lib.github.io/ta-lib-python/ also based on original TA-LIB c/c++) :
 
 ![FastAPI1](https://github.com/toto1234567890/HireMe/edit/main/remoteAppTelegram.png)
@@ -46,8 +45,10 @@ A FastAPI server to load datas, test and calculate realtime TA indicators (based
 
 
 
-
+<br>
 And many others things... (fundamental analysis on stocks, websockets..., sometime integrated, sometimes only snippets or not linked scripts)
+
+to be continued...
 
 
 
