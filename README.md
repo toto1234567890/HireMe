@@ -22,18 +22,18 @@ The project rely on asyncio, flask, fastAPI, multiprocess, threads, sockets, soc
 <h4>This repo contains only (and almost) all the files of the "common" part </h4>
 
 
-
+<br>
 Real time Crypto Currency price :
 
 ![Real Time Crypto](https://github.com/toto1234567890/HireMe/edit/main/crypto.png)
 
 
- 
+<br> 
 A "kind of remote control" from smart phone :
 
 ![remoteAppTelegram](https://github.com/toto1234567890/HireMe/edit/main/remoteAppTelegram.png)
 
-
+<br>
 Data analysis example from "Jupyter labs" : 
 
 
