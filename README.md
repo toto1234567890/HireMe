@@ -1,7 +1,7 @@
 # HireMe
 
 <br>
-This is an exibition of some parts of my personal work done on my spare time... (with chatGPT as assistant recently !) <br>
+This is an exibition of some parts of my personal work done on my spare time... (with recently, chatGPT as assistant !) <br>
 This is the "starting" point of a personal project, which should ended (maybe) as a trading "plateform".
 <br><br>
 This project is/will be split in 5 main parts :<br>
