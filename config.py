@@ -95,8 +95,8 @@ class Config:  # pylint: disable=too-few-public-methods,too-many-instance-attrib
         CF_PORT = 3306
         CF_REFRESH = 300
         # Telegram Emergency (unexpected error?!)
-        # Telegram_Api = 10037566
-        # Telegram_Hash = ce435c2033146088eef68dabb1ffb1df
+        # Telegram_Api = 1
+        # Telegram_Hash = ce435
         # Telegram_Session = MyTelegram.session
         # Log server
         LG_IP = 127.0.0.1
@@ -106,7 +106,7 @@ class Config:  # pylint: disable=too-few-public-methods,too-many-instance-attrib
         NT_URI = None for the moment
         # Remote control
         TB_TOKEN = 5346907063:A
-        TB_CHATID = 1995178465
+        TB_CHATID = 1
         TB_IP = 127.0.0.1
         TB_PORT = 22123
         # Database
