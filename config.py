@@ -105,7 +105,7 @@ class Config:  # pylint: disable=too-few-public-methods,too-many-instance-attrib
         NT_PORT = 10080
         NT_URI = None for the moment
         # Remote control
-        TB_TOKEN = 5346907063:AAHjF-7pTIlJsMj3t_84Ddb1v_gy-G4XAF0
+        TB_TOKEN = 5346907063:A
         TB_CHATID = 1995178465
         TB_IP = 127.0.0.1
         TB_PORT = 22123
