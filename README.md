@@ -31,11 +31,15 @@ A "kind of remote control" from smart phone :
 
 ![Remote App Telegram](https://github.com/toto1234567890/HireMe/edit/main/remoteAppTelegram.png)
 
+<br> 
+A "watchdog" notifier on error, warning... :
+
+![Notifs](https://github.com/toto1234567890/HireMe/edit/main/Notifs.png)
+
 <br>
 Data analysis example from "Jupyter labs" : 
 
-![Link Text](https://github.com/toto1234567890/HireMe/edit/main/MonteCarlo.ipynb)
-
+![Monte Carlo](https://github.com/toto1234567890/HireMe/edit/main/MonteCarlo.ipynb)
 
 <br>
 A FastAPI server to load datas, test and calculate realtime TA indicators (based on https://ta-lib.github.io/ta-lib-python/ also based on original TA-LIB c/c++) :
