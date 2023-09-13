@@ -18,7 +18,7 @@ The project rely on asyncio, flask, fastAPI, multiprocess, threads, sockets, soc
 
 <br>
 
-<h4>This repo contains only (and almost) all the files of the "common" part </h4>
+<h4>This repo contains only, and almost all the files of the "common" part </h4>
 
 <br>
 Real time Crypto Currency price :
