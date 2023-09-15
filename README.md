@@ -34,8 +34,9 @@ A "kind of remote control" from smart phone :<br>
 <br> 
 "Watchdog" notifiers on error, warning... :<br>
 
+![Discord](Disco.png)<br>
 ![Notifs](WatchDog.png)
-![Discord](Discord.png)
+
 
 <br>
 Data analysis example from "Jupyter labs" : <br>
