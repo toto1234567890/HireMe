@@ -34,7 +34,7 @@ A "kind of remote control" from smart phone :
 <br> 
 A "watchdog" notifier on error, warning... :
 
-![Notifs](Notifs.png)
+![Notifs](Notifs.jpg)
 
 <br>
 Data analysis example from "Jupyter labs" : 
