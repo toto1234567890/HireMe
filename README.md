@@ -39,7 +39,7 @@ A "watchdog" notifier on error, warning... :
 <br>
 Data analysis example from "Jupyter labs" : 
 
-![Monte Carlo](MonteCarlo.ipynb)
+![Monte Carlo](MonteCarlo.png)
 
 <br>
 A FastAPI server to load datas, test and calculate realtime TA indicators (based on https://ta-lib.github.io/ta-lib-python/ also based on original TA-LIB c/c++) :
