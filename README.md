@@ -29,7 +29,7 @@ Real time Crypto Currency price :
 <br> 
 A "kind of remote control" from smart phone :
 
-![Remote App Telegram](remoteAppTelegram.png)
+![Remote App Telegram](WithoutDynDNS.png)
 
 <br> 
 A "watchdog" notifier on error, warning... :
