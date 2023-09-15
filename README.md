@@ -29,23 +29,23 @@ Real time Crypto Currency price :
 <br> 
 A "kind of remote control" from smart phone :
 
-![Remote App Telegram](https://github.com/toto1234567890/HireMe/edit/main/remoteAppTelegram.png)
+![Remote App Telegram](remoteAppTelegram.png)
 
 <br> 
 A "watchdog" notifier on error, warning... :
 
-![Notifs](https://github.com/toto1234567890/HireMe/edit/main/Notifs.png)
+![Notifs](Notifs.png)
 
 <br>
 Data analysis example from "Jupyter labs" : 
 
-![Monte Carlo](https://github.com/toto1234567890/HireMe/edit/main/MonteCarlo.ipynb)
+![Monte Carlo](MonteCarlo.ipynb)
 
 <br>
 A FastAPI server to load datas, test and calculate realtime TA indicators (based on https://ta-lib.github.io/ta-lib-python/ also based on original TA-LIB c/c++) :
 
-![FastAPI1](https://github.com/toto1234567890/HireMe/edit/main/fastAPI1.png)
-![FastAPI2](https://github.com/toto1234567890/HireMe/edit/main/fastAPI2.png)
+![FastAPI1](fastAPI1.png)
+![FastAPI2](fastAPI2.png)
 
 
 
