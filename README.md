@@ -1,7 +1,7 @@
 # HireMe
 
 <br>
-This is an exemple of some personal work done on my spare time, with the most recent addition being a chatGPT assistant. <br>
+This is an exemple of some personal work done on my spare time, with the most recent addition using a chatGPT assistant. <br>
 This is the starting point of a personal project which should finally become my trading plateform.
 <br><br>
 This project is/will be split in 5 main components :<br>
