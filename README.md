@@ -34,7 +34,7 @@ A "kind of remote control" from smart phone :<br>
 <br> 
 "Watchdog" notifiers on error, warning... :<br>
 
-![Discord](Disco.png)<br>
+![Discord](Disc.png)<br>
 ![Notifs](WatchDog.png)
 
 
