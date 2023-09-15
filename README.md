@@ -23,7 +23,7 @@ The project relies on Python's asyncio, flask, fastAPI, multiprocess, threads, s
 <br>
 Real time Crypto Currency price :
 
-![Real Time Crypto](https://github.com/toto1234567890/HireMe/edit/main/crypto.png)
+![Real Time Crypto](crypto.png)
 
 
 <br> 
