@@ -32,9 +32,10 @@ A "kind of remote control" from smart phone :<br>
 ![Remote App Telegram](WithoutDynDNS.png)
 
 <br> 
-A "watchdog" notifier on error, warning... :<br>
+"Watchdog" notifiers on error, warning... :<br>
 
 ![Notifs](WatchDog.png)
+![Discord](Disscord.png)
 
 <br>
 Data analysis example from "Jupyter labs" : <br>
