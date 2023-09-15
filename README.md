@@ -13,7 +13,7 @@ This project is/will be split in 5 main components :<br>
 
 <br>
 The "common" part is finished, the others are still under construction.<br>                                                                             
-The project relies on Python's asyncio, flask, fastAPI, multiprocess, threads, sockets, socket-io, jupyter-lab, TA-lib, websocket, django <br>
+The project relies on Python's asyncio, flask, fastAPI, multiprocess, threads, sockets, socket-io, jupyter-lab, TA-lib, websocket, django... <br>
 (I have added the requirements.txt of the python virtual environment).
 
 <br>
