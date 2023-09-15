@@ -21,28 +21,28 @@ The project relies on Python's asyncio, flask, fastAPI, multiprocess, threads, s
 <h4>This current repo contains almost all  files of the "common" component </h4>
 
 <br>
-Real time Crypto Currency price :
+Real time Crypto Currency price :<br>
 
 ![Real Time Crypto](crypto.mp4)
 
 
 <br> 
-A "kind of remote control" from smart phone :
+A "kind of remote control" from smart phone :<br>
 
 ![Remote App Telegram](WithoutDynDNS.png)
 
 <br> 
-A "watchdog" notifier on error, warning... :
+A "watchdog" notifier on error, warning... :<br>
 
 ![Notifs](WatchDog.png)
 
 <br>
-Data analysis example from "Jupyter labs" : 
+Data analysis example from "Jupyter labs" : <br>
 
 ![Monte Carlo](MonteCarlo.png)
 
 <br>
-A FastAPI server to load datas, test and calculate realtime TA indicators (based on https://ta-lib.github.io/ta-lib-python/ also based on original TA-LIB c/c++) :
+A FastAPI server to load datas, test and calculate realtime TA indicators (based on https://ta-lib.github.io/ta-lib-python/ also based on original TA-LIB c/c++) :<br>
 
 ![FastAPI1](fast1.png)<br>
 ![FastAPI2](fast2.png)
