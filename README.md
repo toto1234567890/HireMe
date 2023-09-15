@@ -1,24 +1,24 @@
 # HireMe
 
 <br>
-This is an exibition of some parts of my personal work done on my spare time... (with recently, chatGPT as assistant !) <br>
-This is the "starting" point of a personal project, which should ended (maybe) as my trading "plateform".
+This is an exemple of some personal work done on my spare time, with the most recent addition being a chatGPT assistant. <br>
+This is the starting point of a personal project which should finally become my trading plateform.
 <br><br>
-This project is/will be split in 5 main parts :<br>
-       - a "common" part which contains the "core part" for every other parts <br>
-       - a "trading" part which make trades (operational part) <br>
-       - an "analyst" part which will make different kind of analysis (technical, statistical, fundamental analysis...) <br>
-       - a "scrapy" part which will scrap different kind of data around the web <br>
-       - a "backtesting" part which should be able to make tests with "portfolio rebalancing" <br>
+This project is/will be split in 5 main components :<br>
+       - "common" shares the "core part" for all other parts <br>
+       - "trading" make trades (operational part) <br>
+       - "analyst" makes different types of analysis (technical, statistical, fundamental analysis...) <br>
+       - "scrapy" scraps different data sources on the web <br>
+       - "backtesting" makes tests with "portfolio rebalancing" <br>
 
 <br>
-The common part is mostly finished, the others have been started... <br>                                                                             
-The project rely on asyncio, flask, fastAPI, multiprocess, threads, sockets, socket-io, jupyter-lab, TA-lib, websocket, django... <br>
-(I have added the requirements.txt of the python virtual environment)
+The "common" part is finished, the others are still under construction.<br>                                                                             
+The project relies on Python's asyncio, flask, fastAPI, multiprocess, threads, sockets, socket-io, jupyter-lab, TA-lib, websocket, django <br>
+(I have added the requirements.txt of the python virtual environment).
 
 <br>
 
-<h4>This repo contains only, and almost all the files of the "common" part </h4>
+<h4>This current repo contains almost all  files of the "common" component </h4>
 
 <br>
 Real time Crypto Currency price :
