@@ -23,7 +23,7 @@ The project relies on Python's asyncio, flask, fastAPI, multiprocess, threads, s
 <br>
 Real time Crypto Currency price :<br>
 
-![Real Time Crypto](crypto.mp4)
+![Real Time Crypto](crypto.phg)
 
 
 <br> 
