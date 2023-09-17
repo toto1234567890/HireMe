@@ -1,13 +1,7 @@
 #!/usr/bin/env python
 # coding:utf-8
 
-from copy import deepcopy
-import threading, os
-from flask import Flask, jsonify, request
-from flask_cors import CORS
-from flask_socketio import SocketIO, emit
-from sqlalchemy import func
-from sqlalchemy.orm import Session
+from threading import Thread
 from multiprocessing import Process
 
 # relative import
@@ -246,7 +240,7 @@ class FlaskNodeSubsQ(SubsQ):
         self.config.update(section=self.Name.upper(), configPath=config.COMMON_FILE_PATH, params={"{0}_PORT".format(self.prefixe if not self.prefixe is None else self.Name):str(getUnusedPort())}, name=self.Name)
 
         SubsQ.__init__(self, name=self.Name, mainQueue=mainQueue, default_recv=default_recv, ChildProc=ChildProc, **kwargs)
-        threading.Thread(target=self.runFlask, args=(create_app,)).start()
+        Thread(target=self.runFlask, args=(create_app,)).start()
 
     def runFlask(self, create_app=None):
         try:
