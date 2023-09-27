@@ -164,32 +164,34 @@ class SafeSocket:
 class SafeAsyncSocket:
     """ Default split message = '>L' ?? """
     Name = "safeSocket"
-    def __init__(self, wreater, name=None):
+    def __init__(self, reader, writer, name=None):
         if not name is None: 
             self.Name = name
         self.pickle = pickle
         self.struct = struct
-        self.conn = wreater
+        self.reader = reader
+        self.writer = writer
     async def send_data(self, data):
         serialized_data = self.pickle.dumps(data)
-        await self.conn.write(self.struct.pack('>L', len(serialized_data)))
-        await self.conn.write(serialized_data)
-    async def receive_data(self):
-        #while True:           
-        chunk = await self.conn.read(4)
+        slen = self.struct.pack('>L', len(serialized_data))
+        self.writer.write(slen)
+        await self.writer.drain()
+        self.writer.write(serialized_data)
+        await self.writer.drain()
+    async def receive_data(self):           
+        chunk = await self.reader.read(4)
         if len(chunk) < 4:
-            #break
             return False
         slen = self.struct.unpack('>L', chunk)[0]
-        chunk = await self.conn.read(slen)
+        chunk = await self.reader.read(slen)
         while len(chunk) < slen:
-            chunk = chunk + await self.conn.read(slen - len(chunk))
+            chunk = chunk + await self.reader.read(slen - len(chunk))
         return self.pickle.loads(chunk)
     async def __aenter__(self):
         return self
     async def __aexit__(self, *args):
-        self.conn.close()
-        await self.conn.wait_closed()
+        self.writer.close()
+        await self.writer.wait_closed()
 ######### Insure correct exchange between async sockets  ###########
 ####################################################################
 ###### Insure correct exchange between Pipe MultiProcess  ##########
