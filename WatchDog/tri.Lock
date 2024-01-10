@@ -1,0 +1,6 @@
+watch_tri_watch|127.0.0.1|9021|name watch_tri_watch lock_file_path /Users/imac/Desktop/venv/common/WatchDog/tri.Lock|#N/A|49285
+tri_watch_dog|127.0.0.1|#N/A|name tri_watch_dog lock_file_path /Users/imac/Desktop/venv/common/WatchDog/tri.Lock|/Users/imac/Desktop/venv/logs/tri_watch_dog.log|49286
+config_server|127.0.0.1|3306|port 3306 log_level 20 conf current|#N/A|49278
+notif_server|127.0.0.1|10080|port 10080 log_level 20 conf current|#N/A|49279
+log_server|127.0.0.1|9020|log_level 20 conf current|#N/A|49280
+tele_remote|127.0.0.1|22128|port 22128 log_level 20 only_logger True conf current|#N/A|49281
