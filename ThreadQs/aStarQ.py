@@ -1,13 +1,12 @@
 #!/usr/bin/env python
 # coding:utf-8
-#FIXME problem with Processes on stop with send_msg_in_now ... at first run or with MAIN_BEAT_QUEUE < 0.01
+
 
 from os.path import dirname as osPathDirname, join as osPathJoin
 from uuid import uuid4
 from collections import deque
-from logging import DEBUG, INFO, WARNING
-from asyncio import Lock as asyncioLock, sleep as asyncSleep, Queue as asyncioQueue, all_tasks as asyncioAll_tasks, \
-                    start_server as asyncioStart_server, get_event_loop as asyncioGet_event_loop
+from asyncio import Lock as asyncioLock, Queue as asyncioQueue, run as asyncioRun, all_tasks as asyncioAll_tasks, sleep as asyncioSleep, \
+                    start_server as asyncioStart_server, get_event_loop as asyncioGet_event_loop, wrap_future as asyncioWrap_future
 from flask import Flask, request, render_template, jsonify
 
 
@@ -15,7 +14,7 @@ from flask import Flask, request, render_template, jsonify
 from sys import path;path.extend("..")
 from common.ThreadQs.routing_rules import LostQmsg
 from common.TeleRemote.tele_command import ATelecommand
-from common.Helpers.helpers import Singleton, init_logger, getUnusedPort, threadIt
+from common.Helpers.helpers import Singleton, init_logger, getUnusedPort
 from common.Helpers.os_helpers import start_independant_process
 from common.Helpers.network_helpers import SafeAsyncSocket
 #from trading.trading_helpers import refresh_trading_component
@@ -37,6 +36,24 @@ class Qmsg:
 
 ########################################################################################################################################
 
+class aQSocket():
+    """
+    class to simulate socket for incoming message to aMatrixQ 
+    or managing Subs tasks in aStarQ... 
+    """
+    def __init__(self, process_my_message, forward_message):
+        self.aMatrixQueue = asyncioQueue()
+        self.process_my_message = process_my_message
+        self.forward_message = forward_message
+    async def send_data(self, data):
+        await self.aMatrixQueue.put(data)
+    async def received_data(self):
+        while True:
+            data = await self.aMatrixQueue.get()
+            msg = await self.process_my_message(data)
+            await self.forward_message(msg)
+            self.aMatrixQueue.task_done()
+
 
 class AStarQ(ATelecommand, metaclass=Singleton):
     """ 
@@ -55,30 +72,38 @@ class AStarQ(ATelecommand, metaclass=Singleton):
     """
     Name = "AStarQ"
     asyncLoop = None
-    def __init__(self, config:str="common", asyncLoop=None, name:str=None, host:str="127.0.0.1", port:int=int(getUnusedPort()), log_level=INFO, autorun=True, *args, **kwargs):
+    def __init__(self, config, logger, asyncLoop=None, name:str=None, host:str="127.0.0.1", port:int=int(getUnusedPort()), autorun=True, *args, **kwargs):
         if not name is None:
             self.Name = name
-        self.config, self.logger = init_logger(name=self.Name.lower(), config=config, log_level=log_level) 
+        self.config = config
+        self.logger = logger
         self.host = host ; self.port = port
-        self.clients = {}
+        self.clients = {} # traders
+        self.asyncLoop = None
+        teleAsyncHook = None
+        self.state = "inited"   
+
+        # async loop
         if not asyncLoop is None: self.asyncLoop = asyncLoop
         else: self.asyncLoop = asyncioGet_event_loop()
-        # Tcp part
-        self.asyncLoop.create_task(self.run_TCP_server(), name="run_TCP_server")
-        # telecommand
-        self.state = "inited"
-        self.TeleBufQ = deque()
-        self.asyncLoop.create_task(self.TeleCommand(), name="Telecommand")
 
-        for arg in args:
-            self.subs(arg, kwargs)
-           
+        # telecommand
+        self.TeleBufQ = deque()
+
+        #for arg in args:
+        #    self.subs(arg, kwargs)
+          
         if autorun:
             self.run_forever()
 
     def run_forever(self):
+        # telecommand
+        self.teleAsyncHook = self.asyncLoop.create_task(self.TeleCommand())
+        # Tcp part
+        self.asyncLoop.create_task(self.run_TCP_server(), name="run_TCP_server")
         # monitoring
-        #self.asyncLoop.create_task(self.start_monitoring(), name="monitoring")
+        doNotWaitThread = self.asyncLoop.run_in_executor(None, self.start_webserver, self.Name)
+        _ = asyncioWrap_future(doNotWaitThread)
         # run_forever
         self.asyncLoop.run_forever()
 
@@ -88,6 +113,7 @@ class AStarQ(ATelecommand, metaclass=Singleton):
         global asyncLock
         async with asyncLock:
             self.clients[name] = writer
+            
     def _get_subs(self, TaskOrChildProc, childproc=False):
         if type(TaskOrChildProc) == "str":
             if childproc:
@@ -97,7 +123,7 @@ class AStarQ(ATelecommand, metaclass=Singleton):
         else: 
             return TaskOrChildProc
     # @refresh_trading_component
-    async def subs(self, name, subs, childProc=False, **kwargs):
+    async def Subs(self, name, subs, childProc=False, **kwargs):
         if not childProc: 
             # local subs
             try:
@@ -122,7 +148,7 @@ class AStarQ(ATelecommand, metaclass=Singleton):
         global asyncLock
         async with asyncLock:
             self.clients.pop(name)
-    async def un_subs(self, name):
+    async def un_Subs(self, name):
         await self._unregister_subs(name=name)
         subsTask = None
         for task in asyncioAll_tasks():
@@ -142,84 +168,74 @@ class AStarQ(ATelecommand, metaclass=Singleton):
     async def get_response(self, msg):
         global asyncLock
         async with asyncLock:
-            writer = self.clients[msg.too]
-            return await writer.send_data(msg)
-
+            try:
+                writer = self.clients[msg.too].writer
+            except Exception as e:
+                LostQmsg(msg)
+                await self.logger.asyncError("{0} : error while trying to get response message : {1}".format(self.Name, e))
+        return await writer.send_data(msg)
+    
     async def forward_message(self, msg):
         global asyncLock
         async with asyncLock:
-            writer = self.clients[msg.too]
-            writer.send_data(msg)
-            return None
+            try:
+                writer = self.clients[msg.too].writer
+            except Exception as e:
+                LostQmsg(msg) 
+                await self.logger.asyncError("{0} : error while trying to forward message : {1}".format(self.Name, e))     
+        await writer.send_data(msg)
 
     ####################################################################
     # aStarQ heart
-    async def handle_TCP_client(self, reader, writer):
-        asyncReader = SafeAsyncSocket(reader)
-        asyncWriter = SafeAsyncSocket(writer)
-        data = await asyncReader.receive_data()
+    async def handle_TCP_client(reader, writer, aStarQ):
+        asyncSock = SafeAsyncSocket(reader=reader, writer=writer)
+        data = await asyncSock.receive_data()
         if not data:
-            asyncWriter.conn.close()
-            await asyncWriter.conn.wait_closed()
+            asyncSock.writer.close()
+            await asyncSock.writer.wait_closed()
             return
         clientName, host, port = data.split(':') ; port = int(port)
-        self._register_subs(name=clientName, writer=writer)
-        await self.logger.asyncInfo("{0} : '{1}' has established connection without encryption from '{2}' destport '{3}'".format(self.Name, clientName, host, port))
+        aStarQ._register_subs(name=clientName, writer=writer)
+        await aStarQ.logger.asyncInfo("{0} : '{1}' has established connection without encryption from '{2}' destport '{3}'".format(aStarQ.Name, clientName, host, port))
         while True:
-            data = await asyncReader.receive_data()
+            data = await asyncSock.receive_data()
             if not data:
                 break
             if data.priority:
-                response = await self.get_response(msg=data)
+                response = await aStarQ.get_response(msg=data)
             else:
-                response = self.forward_message(msg=data)
+                await aStarQ.forward_message(msg=data)
+                response = None
             if not response is None:
-                await asyncWriter.send_data(response)
-                await asyncWriter.conn.drain()
-                await self.logger.asyncInfo("{0} async TCP : response '{1}' send to '{2}'".format(self.Name, response, clientName))
-        writer.close()
-        await writer.wait_closed()
-        await self._unregister_subs(name=clientName)
+                asyncSock.send_data(response)
+                await asyncSock.writer.drain()
+                await aStarQ.logger.asyncInfo("{0} async TCP : response '{1}' send to '{2}'".format(aStarQ.Name, response, clientName))
+        asyncSock.writer.close()
+        await asyncSock.writer.wait_closed()
+        await aStarQ._unregister_subs(name=clientName)
 
     async def run_TCP_server(self):
-        async_tcp_server = await asyncioStart_server(self.handle_TCP_client, host=self.host, port=self.port)
+        self.async_tcp_server = await asyncioStart_server(lambda r, w: self.handle_TCP_client(r, w, self), self.host, self.port)
         await self.logger.asyncInfo("{0} async TCP : socket async TCP handler is open : {1}, srcport {2}".format(self.Name, self.host, self.port))
-        await async_tcp_server.serve_forever()
+        await self.async_tcp_server.serve_forever()
 
     #####################################################################
     ## Telecommand part
-    def get_asyncLook(self):
+    def get_asyncLock(self):
         global asyncLock
         return asyncLock
 
-    #####################################################################
+    #####################################################################    
     ## webServer view
-
-    #def stop_webserve(self):
-    #    from time import sleep
-    #    from datetime import datetime
-    #    try:
-    #        while True:
-    #            if not self.run:
-    #                func = request.environ.get('werkzeug.server.shutdown')
-    #                func() ; self.asyncLoop.stop()
-    #                self.logger.asyncInfo("{0} : monitoring webserver has been stopped at {1} !".format(self.Name.capitalize(), datetime.utcnow()))
-    #                break
-    #            sleep(1)
-    #    except Exception as e:
-    #        self.logger.asyncCritical("{0} : error while trying to stop monitoring webserver and asyncio... : {1}".format(self.Name.capitalize(), e))
-    async def start_monitoring(self):
-        await self.asyncLoop.run_in_executor(None, self.start_webserver(name=self.Name))
-
     def start_webserver(self, name, host_port=int(getUnusedPort())):
-        #from threading import Thread
-        #Thread(target=self.stop_webserve).start()
         try :
             web_template_folder = osPathJoin(osPathDirname(__file__), "templates")
             web_static_folder = osPathJoin(osPathDirname(__file__), "static")
 
             app = Flask(name, template_folder=web_template_folder, static_folder=web_static_folder)
+            #self.webserver = host_port
             app.config['SERVER_NAME'] = "127.0.0.1:{0}".format(host_port)
+            self.logger.info("{0} : flask web server is available here : http://{1}:{2}".format(self.Name, self.host, host_port))
 
             # main http endpoint
             @app.route('/')
@@ -236,31 +252,37 @@ class AStarQ(ATelecommand, metaclass=Singleton):
             app.run()
         except Exception as e:
             self.logger.critical("{0} : error while trying to start web interface : {1}".format(name.capitalize(), e))
+            enabled = False
             exit(1)
 
 
 
-
-class TaskSubs():
-    def __init__(self):
-        self.TaskQ = asyncioQueue()
-    async def send_data(self, data):
-        if data.priority:
-            return await self.process_data(data)
-        else:
-            self.TaskQ.put_nowait(data)
-    async def run(self):
-        while True:
-            data = await self.TaskQ.get()
-            self.process_data(data)
-
-
 #================================================================
 if __name__ == "__main__":
-    # for testing purposes
-    AStarQ(autorun=True)
+    configStr = "current"
+    config, logger = init_logger(name=AStarQ.Name.lower(), config=configStr) 
+    # for  testing purposes
+    mainQ = AStarQ(config=config, logger=logger, autorun=False)
+    asyncioRun(mainQ.run_forever())
+    
 
 
+    ## Add this to another python file for testing 
+    #class TaskSubs():
+    #    def __init__(self, autorun=True):
+    #        AStarQ.__init__(self, autorun=autorun)
+    #        self.TaskQ = asyncioQueue()
+    #    async def send_data(self, data):
+    #        if data.priority:
+    #            return await self.process_data(data)
+    #        else:
+    #            self.TaskQ.put_nowait(data)
+    #    async def run(self):
+    #        while True:
+    #            data = await self.TaskQ.get()
+    #            self.process_data(data)
+
+    # from  
     #def_kwargs={"config":config, "logger":logger}
 #
     #SwissQ = SubsQ("SwissQ", tradeQueues, default_recv="SwissquoteAPI")
