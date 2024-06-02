@@ -1,7 +1,7 @@
 # HireMe
 
 <br>
-<i>*Those are draft coding file I hope having enought time to create a demo server soon...<i><br>
+<i><small>*Those are draft coding file I hope having enought time to create a demo server soon...<small><i><br>
 <hr>
 
 This is an example of some personal work done on my spare time, with the most recent addition using a chatGPT assistant. <br>
