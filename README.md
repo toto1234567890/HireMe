@@ -1,5 +1,5 @@
 # HireMe
-<i>*Those are draft coding file I hope having enought time to create a demo server soon...</i>
+$${\color{red}<i>*Those are draft coding file I hope having enought time to create a demo server soon...</i>}$$
 <hr>
 <br>
 <br>
