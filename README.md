@@ -1,5 +1,5 @@
 # HireMe
-{\color{red}<i>*Those \space are \space draft \space coding \space file \space I \space hope \space having \space enought \space \space time \space \space to create \space a \space demo \space server \space soon...</i>}
+<i>$${\color{red}*Those \space are \space draft \space coding \space file \space I \space hope \space having \space enought \space \space time \space \space to create \space a \space demo \space server \space soon...}$$</i>
 <hr>
 <br>
 <br>
